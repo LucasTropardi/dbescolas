@@ -13,13 +13,29 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Home') }}
                     </x-nav-link>
                 </div>
 
+                @can('level')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('escola.index')" :active="request()->routeIs('escola.index')">
+                            <i class="fa-solid fa-school-circle-check"></i>
+                        </x-nav-link>
+                    </div>
+                @endcan
+
+                @can('level')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                            <i class="fa-solid fa-users-rectangle"></i>
+                        </x-nav-link>
+                    </div>
+                @endcan
+
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                        {{ __('Usuários') }}
+                    <x-nav-link :href="route('minhas.escolas', Auth::user()->id)" :active="request()->routeIs('minhas.escolas', Auth::user()->id)">
+                        {{ __('Escolas') }}
                     </x-nav-link>
                 </div>
             </div>

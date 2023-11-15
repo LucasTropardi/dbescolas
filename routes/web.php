@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\EscolaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\Escola;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +22,10 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard', [
+        'escolas' => Escola::all(),
+        //
+    ]);
 })->middleware(['auth', 'verified'])
     ->name('dashboard');
 
@@ -39,6 +44,19 @@ Route::middleware('auth')->group(function () {
         ->name('user.edit');
     Route::put('/edit-update/{id}',[UserController::class,'update'])
         ->name('user.update');
+
+    // escolas
+    Route::resources([
+        'escola' => EscolaController::class
+    ]);
+
+    // minhas escolas
+    Route::get('/minhas_escolas/{id}',[EscolaController::class, 'minhas_escolas'])
+        ->name('minhas.escolas');
+
+    // confirma delete
+    Route::get('/confirma-delete/{id}',[EscolaController::class,'confirma_delete'])
+        ->name('confirma.delete');
 });
 
 require __DIR__.'/auth.php';
