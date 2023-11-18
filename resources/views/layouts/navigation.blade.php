@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Home') }}
+                        <i class="fa-solid fa-house"></i>
                     </x-nav-link>
                 </div>
 
@@ -21,6 +21,14 @@
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('escola.index')" :active="request()->routeIs('escola.index')">
                             <i class="fa-solid fa-school-circle-check"></i>
+                        </x-nav-link>
+                    </div>
+                @endcan
+
+                @can('level')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('sala.index')" :active="request()->routeIs('sala.index')">
+                            <i class="fa-solid fa-book"></i>
                         </x-nav-link>
                     </div>
                 @endcan
@@ -36,6 +44,12 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('minhas.escolas', Auth::user()->id)" :active="request()->routeIs('minhas.escolas', Auth::user()->id)">
                         {{ __('Escolas') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('minhas.salas', Auth::user()->id)" :active="request()->routeIs('minhas.salas', Auth::user()->id)">
+                        {{ __('Salas') }}
                     </x-nav-link>
                 </div>
             </div>

@@ -24,7 +24,10 @@
                         <p><strong>Cidade: </strong>{{ $escola->esCidade }}</p>
                         <p><strong>Observação: </strong>{{ $escola->esObs }}</p>
                     </div>
-                    <p class="p-2"><a href="{{ route('minhas.escolas', Auth::user()->id) }}" class="bg-blue-500 text-white rounded p-2">Voltar</a> <a href="{{ route('escola.edit', $escola->id) }}" class="bg-gray-500 text-white rounded p-2">Editar</a> <a href="{{ route('confirma.delete',$escola->id) }}" class="bg-red-500 text-white rounded p-2">Excluir</a></p><br>
+                    <p class="p-2">
+                        <a href="{{ route('minhas.escolas', Auth::user()->id) }}" class="bg-blue-500 text-white rounded p-2">Voltar</a>
+                        <a href="{{ route('escola.edit', $escola->id) }}" class="bg-gray-500 text-white rounded p-2">Editar</a>
+                        <a href="{{ route('confirma.delete',$escola->id) }}" class="bg-red-500 text-white rounded p-2">Excluir</a></p><br>
                 </div>
             </div>
         </div>

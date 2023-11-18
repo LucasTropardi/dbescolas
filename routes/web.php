@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EscolaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SalaController;
 use App\Http\Controllers\UserController;
 use App\Models\Escola;
 use Illuminate\Support\Facades\Route;
@@ -45,18 +46,28 @@ Route::middleware('auth')->group(function () {
     Route::put('/edit-update/{id}',[UserController::class,'update'])
         ->name('user.update');
 
-    // escolas
+    // escolas, salas, alunos, ocorrencias, chamada, nota resources
     Route::resources([
-        'escola' => EscolaController::class
+        'escola' => EscolaController::class,
+        'sala'   => SalaController::class,
     ]);
 
     // minhas escolas
     Route::get('/minhas_escolas/{id}',[EscolaController::class, 'minhas_escolas'])
         ->name('minhas.escolas');
 
-    // confirma delete
+    // confirma delete escola
     Route::get('/confirma-delete/{id}',[EscolaController::class,'confirma_delete'])
         ->name('confirma.delete');
+
+    // minhas salas
+    Route::get('/minhas_salas/{id}',[SalaController::class, 'minhas_salas'])
+        ->name('minhas.salas');
+
+    // confirma delete sala
+    Route::get('/confirma-delete-sala/{id}',[SalaController::class,'confirma_delete_sala'])
+        ->name('confirma.delete.sala');
+
 });
 
 require __DIR__.'/auth.php';

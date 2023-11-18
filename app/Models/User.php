@@ -17,6 +17,11 @@ class User extends Authenticatable
         return $this->hasMany(Escola::class);
     }
 
+    public function classes()
+    {
+        return $this->hasMany(Sala::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

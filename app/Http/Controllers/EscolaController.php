@@ -56,7 +56,7 @@ class EscolaController extends Controller
         $escola->esObs      = $request->esObs;
 
         $escola->save();
-        return redirect()->route('escola.create')->with('msg','Escola cadastrada com sucesso.');
+        return redirect()->route('minhas.escolas', Auth::user()->id)->with('msg','Escola cadastrada com sucesso.');
     }
 
     /**

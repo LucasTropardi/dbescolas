@@ -11,10 +11,6 @@
                 <div class="p-6 text-gray-900">
                     <p class="mb-4">Olá, <strong>{{ Auth::user()->name }}!</strong></p>
 
-                    <p class="mb-4 p-6">
-                        <a href="{{ route('minhas.escolas', Auth::user()->id) }}" class="bg-blue-500 text-white rounded p-2">Minhas escolas</a>
-                    </p>
-
                     @if (session('msg'))
                         <p class="bg-blue-500 p-2 rounded text-center text-white mb-4">{{ session('msg') }}</p>
                     @endif
