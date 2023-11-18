@@ -19,6 +19,14 @@
 
                 @can('level')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                            <i class="fa-solid fa-users-rectangle"></i>
+                        </x-nav-link>
+                    </div>
+                @endcan
+
+                @can('level')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('escola.index')" :active="request()->routeIs('escola.index')">
                             <i class="fa-solid fa-school-circle-check"></i>
                         </x-nav-link>
@@ -35,8 +43,8 @@
 
                 @can('level')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                            <i class="fa-solid fa-users-rectangle"></i>
+                        <x-nav-link :href="route('aluno.index')" :active="request()->routeIs('aluno.index')">
+                            <i class="fa-solid fa-user"></i>
                         </x-nav-link>
                     </div>
                 @endcan
@@ -50,6 +58,12 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('minhas.salas', Auth::user()->id)" :active="request()->routeIs('minhas.salas', Auth::user()->id)">
                         {{ __('Salas') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('meus.alunos', Auth::user()->id)" :active="request()->routeIs('meus.alunos', Auth::user()->id)">
+                        {{ __('Alunos') }}
                     </x-nav-link>
                 </div>
             </div>

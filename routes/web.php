@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\EscolaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SalaController;
@@ -50,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::resources([
         'escola' => EscolaController::class,
         'sala'   => SalaController::class,
+        'aluno'  => AlunoController::class,
     ]);
 
     // minhas escolas
@@ -68,6 +70,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/confirma-delete-sala/{id}',[SalaController::class,'confirma_delete_sala'])
         ->name('confirma.delete.sala');
 
+    // meus alunos
+    Route::get('/meus_alunos/{id}',[AlunoController::class, 'meus_alunos'])
+        ->name('meus.alunos');
+
+    // confirma delete aluno
+    Route::get('/confirma-delete-aluno/{id}',[AlunoController::class,'confirma_delete_aluno'])
+        ->name('confirma.delete.aluno');
 });
 
 require __DIR__.'/auth.php';

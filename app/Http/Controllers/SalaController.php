@@ -19,7 +19,7 @@ class SalaController extends Controller
     public function minhas_salas(User $id)
     {
         $user = User::where('id', $id->id)->first();
-        $salas = $user->classes()->get();
+        $salas = $user->salas()->get();
 
         return view('salas.minhas_salas',[
             'salas' => $salas
@@ -76,7 +76,7 @@ class SalaController extends Controller
      */
     public function edit(Sala $sala)
     {
-        $escolas = Escola::all();
+        $escolas = Escola::where('user_id', Auth::user()->id)->get();
         return view('salas.edit',[
             'sala' => $sala,
             'escolas' => $escolas

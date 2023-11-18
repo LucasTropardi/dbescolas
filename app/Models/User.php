@@ -17,9 +17,14 @@ class User extends Authenticatable
         return $this->hasMany(Escola::class);
     }
 
-    public function classes()
+    public function salas()
     {
         return $this->hasMany(Sala::class);
+    }
+
+    public function alunos()
+    {
+        return $this->hasMany(Aluno::class);
     }
 
     /**
