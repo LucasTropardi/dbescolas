@@ -30,4 +30,9 @@ class Aluno extends Model
     {
         return $this->belongsTo(Sala::class);
     }
+
+    public function ocorrencias()
+    {
+        return $this->hasMany(Ocorrencia::class);
+    }
 }
